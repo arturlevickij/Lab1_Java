@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
+import lombok.var;
 @Setter
 @Getter
 @NoArgsConstructor
@@ -20,18 +21,19 @@ public class PreciousStone {
 	private static PreciousStone instance;
 	public static PreciousStone getInstance() {
 		if (instance == null) {
-			instance = new PreciousStone("Gold", 5.378, "Yellow", 0.05, 107.4);
+			instance = new PreciousStone();
 		}
 		return instance;
 	}
 	public double getTotalPrice() {
 		return(pricePerCarat * carat);
 	}
-	public void increaseClarity() {
-		System.out.println(clarity + 1);
+	public double increaseClarity() {
+		return (clarity = clarity + 1);
 	}
-	public void increasePrice(double percentage) {
-		System.out.println(((getTotalPrice() * percentage)/100)+getTotalPrice());
+	public double increasePrice(double percentage) {
+		double value = ((getTotalPrice() * percentage)/100)+getTotalPrice();
+		return (value);
 	}
 	@Override
 		public String toString() {
@@ -42,16 +44,16 @@ public class PreciousStone {
 	}
 
 	public static void main(String[] args) {
-		PreciousStone[] stone = new PreciousStone[4];
-		stone[0] = new PreciousStone();
-		stone[1] = new PreciousStone("Diamond", 2.356, "Blue", 0.72, 29.2);
-		System.out.println(stone[1].getTotalPrice());
-		stone[1].increaseClarity();
-		stone[1].increasePrice(20);
-		stone[2] = getInstance();
-		stone[3] = getInstance();
-		for (int i = 0; i < stone.length; i++) {
-			System.out.println(stone[i].toString());
+		PreciousStone[] stones = new PreciousStone[4];
+		stones[0] = new PreciousStone();
+		stones[1] = new PreciousStone("Diamond", 2.356, "Blue", 0.72, 29.2);
+		System.out.println(stones[1].getTotalPrice());
+		System.out.println(stones[1].increaseClarity());
+		System.out.println(stones[1].increasePrice(20));
+		stones[2] = getInstance();
+		stones[3] = getInstance();
+		for(PreciousStone stone:stones) {
+			System.out.println(stone);
 		}
-	}
+}
 }
