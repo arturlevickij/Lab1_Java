@@ -16,7 +16,7 @@ import ua.lviv.iot.algo.part1.lab1.StoneWriter;
 
 public class StoneWriterTest {
 	private static final String RESULT_FILE = "src\\test\\resources\\result.csv";
-    private static final String EXPECTED_FILE = "src\\testresources\\expected.csv";
+    private static final String EXPECTED_FILE = "src\\test\\resources\\expected.csv";
     StoneWriter writer;
     StoneManager stones;
     @BeforeEach
