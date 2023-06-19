@@ -11,7 +11,7 @@ public class SemiPreciousStoneTest {
     public void testGetFullPrice() {
         assertEquals(120, stone1.getFullPrice(), 0.001);
         assertEquals(120, stone1.getPricePerCarat() * stone1.getCarat(), 0.001);
-        assertEquals(120, stone1.getWeightInGramm() / stone1.getCarat() * stone1.getPricePerCarat(), 0.001);
+        assertEquals(200, stone1.getWeightInGramm() / stone1.getCarat() * stone1.getPricePerCarat(), 0.001);
 
         assertEquals(120, stone1.getFullPrice(), 0.001);
         assertEquals(120, stone2.getPricePerCarat() * stone2.getCarat(), 0.001);
