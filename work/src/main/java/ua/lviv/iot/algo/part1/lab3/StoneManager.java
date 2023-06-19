@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package ua.lviv.iot.algo.part1.lab3;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -54,4 +54,3 @@ public class StoneManager {
 	    
 	}
 }
-
