@@ -10,57 +10,41 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StoneManagerTest {
-	private final List<Stone> stones = new LinkedList<Stone>();
-	
+	StoneManager stoneManager = new StoneManager();
+
 	@Test
 	@DisplayName("Add Stone method should work")
 	public void testAddStone() {
 	    for (int index = 0; index < 8; index++) {
-	        stoneManager.addStone(new Diamond("Big Diamond", "White", 50000));
+	    	stoneManager.addStone(new PreciousStone( "Diamond", "Blue",  2.356, 0.72, 29.2, 36));
 	    }
 	    assertEquals(8, stoneManager.getStones().size());
 	}
-
+	
 	@Test
 	@DisplayName("Find Stones with price range should work")
-	public void testFindStonesWithPriceRange() {
-	    stoneManager.addStone(new Diamond("Big Diamond", "White", 50000));
-	    stoneManager.addStone(new Ruby("Small Ruby", "Red", 1000));
-	    stoneManager.addStone(new Emerald("Emerald", "Green", 3000));
+	public void testFindPriceGreaterThan() {
+		stoneManager.addStone(new PreciousStone( "Diamond", "Blue",  2.356, 0.72, 29.2, 36));
+	    stoneManager.addStone(new PreciousStone( "Ruby", "Blue",  1.3, 0.2, 2.2, 6));
+	    stoneManager.addStone(new ArtificialPreciousStone( "Diamond", "Blue",  "Lab3", 0.72, 29.2));
 
 	    List<Stone> actualStones = new LinkedList<>();
-	    actualStones.add(new Diamond("Big Diamond", "White", 50000));
-	    actualStones.add(new Emerald("Emerald", "Green", 3000));
+	    actualStones.add(new PreciousStone( "Diamond", "Blue",  2.356, 0.72, 29.2, 36));
+	    actualStones.add(new ArtificialPreciousStone( "Diamond", "Blue",  "Lab3", 0.72, 29.2));
 
-	    assertEquals(actualStones.size(), stoneManager.findStonesWithPriceRange(2000, 50000).size());
+	    assertEquals(actualStones.size(), stoneManager.findPriceGreaterThan(20).size());
 	}
-
+	
 	@Test
 	@DisplayName("Find Stones by color should work")
 	public void testFindStonesByColor() {
-	    stoneManager.addStone(new Diamond("Big Diamond", "White", 50000));
-	    stoneManager.addStone(new Ruby("Small Ruby", "Red", 1000));
-	    stoneManager.addStone(new Emerald("Emerald", "Green", 3000));
+	    stoneManager.addStone(new PreciousStone( "Diamond", "Blue",  2.356, 0.72, 29.2, 36));
+	    stoneManager.addStone(new PreciousStone( "Ruby", "Red",  1.3, 0.2, 2.2, 6));
+	    stoneManager.addStone(new ArtificialPreciousStone( "Diamond", "Blue",  "Lab3", 0.72, 29.2));
 
 	    List<Stone> actualStones = new LinkedList<>();
-	    actualStones.add(new Ruby("Small Ruby", "Red", 1000));
+	    actualStones.add(new PreciousStone( "Diamond", "Blue",  2.356, 0.72, 29.2, 36));
 
-	    assertEquals(actualStones.size(), stoneManager.findStonesByColor("Red").size());
-	}
-
-	@Test
-	@DisplayName("Remove Stone method should work")
-	public void testRemoveStone() {
-	    stoneManager.addStone(new Diamond("Big Diamond", "White", 50000));
-	    stoneManager.addStone(new Ruby("Small Ruby", "Red", 1000));
-	    stoneManager.addStone(new Emerald("Emerald", "Green", 3000));
-
-	    List<Stone> actualStones = new LinkedList<>();
-	    actualStones.add(new Diamond("Big Diamond", "White", 50000));
-	    actualStones.add(new Emerald("Emerald", "Green", 3000));
-
-	    stoneManager.removeStone(new Ruby("Small Ruby", "Red", 1000));
-
-	    assertEquals(actualStones.size(), stoneManager.getStones().size());
+	    assertEquals(actualStones.size(), stoneManager.findWithColor("Red").size());
 	}
 }
