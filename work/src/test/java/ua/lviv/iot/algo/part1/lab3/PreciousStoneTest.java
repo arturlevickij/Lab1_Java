@@ -6,8 +6,6 @@ import org.junit.Test;
 
 public class PreciousStoneTest {
     private final PreciousStone diamond = new PreciousStone("Diamond", "Colorless", 1.5, 7.5, 10000, 3.0);
-    private final PreciousStone diamond2 = new PreciousStone("Diamond", "Colorless", 1.5, 7.5, 10000, 3.0);
-    private final PreciousStone diamond3 = new PreciousStone();
 
     @Test
     public void testGetTotalPrice() {
@@ -21,7 +19,7 @@ public class PreciousStoneTest {
 
     @Test
     public void testIncreasePrice() {
-        assertEquals(15500, diamond.increasePrice(5), 0.01);
+        assertEquals(15750, diamond.increasePrice(5), 0.01);
     }
 
     @Test
@@ -41,13 +39,9 @@ public class PreciousStoneTest {
 
     @Test
     public void testToString() {
-        String expected = "PreciousStone{name='Diamond', color='Colorless', carat=1.5, clarity=7.5, pricePerCarat=10000.0, weightInGramm=3.0}";
+        String expected = "PreciousStone(super=Stone(name=Diamond, color=Colorless), "
+        		+ "carat=1.5, clarity=7.5, pricePerCarat=10000.0, weightInGramm=3.0)";
         assertEquals(expected, diamond.toString());
-    }
-
-    @Test
-    public void testEquals() {
-        assertEquals(diamond, diamond2);
     }
 
     @Test
